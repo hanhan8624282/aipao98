@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><t
+    e>Title</title>  </head>
+<body>
+
+<script>
+  function GetVerifyCodeAction() {
+    var email = $("#email").val();
+    if (!checkEmail(email)) {
+      $("#area_error").addClass("log-tips").show().text(EmailFormatIsFault);//邮箱格式错误
+    }
+    else {
+      $.ajax({
+        type: "post",
+        async: false,
+        url: "/Handler/SendMsgToMail.ashx",
+        data: { op: 12, email: email },
+        success: function (result) {
+          var data = parseInt(result);
+          switch (data) {
+            case 1:
+              $("#area_error").addClass("log-tips").show().text(CheckVerifyCode);//验证码已发送，请注意查收
+              $("#btnSendCode").removeAttr("onclick");//移除发送验证码的click事件
+              tcode = setInterval("ReSend()", 1000);//设置定时器，60秒后容许再次发送
+              break;
+            case -1:
+              $("#area_error").addClass("log-tips").show().text(FillEmail);//请输入邮箱
+              break;
+            case -2:
+              $("#area_error").addClass("log-tips").show().text(MailNotReg);//邮箱尚未注册
+              break;
+            case -3:
+              $("#area_error").addClass("log-tips").show().text(OperateException);//操作异常
+              break;
+            case -4:
+              $("#area_error").addClass("log-tips").show().text(OperateException);//操作异常
+              break;
+            case -5:
+              $("#area_error").addClass("log-tips").show().text(OnceMinute);//每分钟只能发送一次
+              break;
+            default:
+              $("#area_error").addClass("log-tips").show().text(OperateException);//操作异常
+              break;
+          }
+        }
+      });
+    }
+    return false;
+  }
+</script>
+
+</body>
+</html>
+

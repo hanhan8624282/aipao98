@@ -1,0 +1,37 @@
+
+spring:
+  datasource:
+    druid:
+      username: ecc_event_web
+      password: ecc_event_web
+      url: jdbc:oracle:thin:@10.0.0.4:1521:rac
+  thymeleaf:
+    cache: false #thymeleaf页面模板（false禁止缓存，默认为：true）
+  redis:
+    database: 12
+    host: 10.0.0.8
+    port: 6379
+    password: 8aae5e70e1b049dbb2ff5ed7035f173a
+
+zkserver: 10.0.0.8:7821
+sinopec:
+  rongchuangUrl: http://crm-mp-openapi-dev.sunacctg.com/openapi/coupon/exchangeCoupon
+  rongchuangApiKey: 41d66cc34c324a3b98cd2391f66249a1
+  rongchuangSecret: 2f47d000cb654f2badbd0d2b3691dfee
+  rcWeappUserName: gh_53b22bd5bf2b
+  rcWeappPath: subpages/wallet/walletIndex/walletIndex?scene=b33d3822
+  rcSourceCode: b33d3822
+  rongchuangRegisterUrl: http://crm-mp-openapi-dev.sunacctg.com/openapi/member/register
+  rcH5Url: https://crm-mp-activity-dev.sunacctg.com/channel/index.html#/Login?id=94&ucode=1617068141450
+
+YJ_SMS_URL: http://10.0.0.2:7808/getNewSmsCode/2338/{phoneNum}/{code}/{customerId}/{openid}
+#YJ_CODE_URL: http://10.0.0.2:7808/getNewCodeById/a744f716400548d084dbb48a4f0b5cd3/{customerId}/{openid}
+YJ_CODE_URL: http://10.0.0.8:7825/getNewCodeById/a744f716400548d084dbb48a4f0b5cd3/{customerId}/{openid}
+YJ_USE_URL: https://newmall-uat-site.ejoy365hk.com/wap#/pages/tabbar-home
+#YJ_USE_URL: https://newmall-site.ejoy365hk.com/wap#/pages/tabbar-home
+wlUrlToken: K72patQzLuPs6uZ4DfYI
+wlAddUrl: http://39.105.87.173:7001/api/v1/sinopec/orders/add
+wlQueryUrl: http://39.105.87.173:7001/api/v1/sinopec/orders/query
+wlWeappUserName: gh_68c71bfebf04
+wlWeappPath: pages/index.html
+#http://10.0.0.8:7825/
