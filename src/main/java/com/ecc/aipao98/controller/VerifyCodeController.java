@@ -7,7 +7,6 @@ import com.ecc.aipao98.dao.SmsLogDao;
 import com.ecc.aipao98.pojo.SmsLog;
 import com.ecc.aipao98.until.*;
 import com.google.gson.Gson;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,6 @@ public class VerifyCodeController {
     }
     @PostMapping
     @RequestMapping("/VerifiCodeImageCheck")
-    @ApiOperation("报名第一个验证码接口-通过发送短信验证码")
     public R login(HttpServletRequest request){
 
         //获取用户输入的验证码

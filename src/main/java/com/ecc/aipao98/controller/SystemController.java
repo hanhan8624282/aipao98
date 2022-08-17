@@ -4,9 +4,7 @@ import com.ecc.aipao98.dao.SignupDetailDao;
 import com.ecc.aipao98.dao.SmsLogDao;
 import com.ecc.aipao98.until.CreateVerifiCodeImage;
 import com.ecc.aipao98.until.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +27,6 @@ import java.util.Map;
  */
 @RestController
 @Slf4j
-@Api("系统后台")
 public class SystemController {
 
     @Autowired
