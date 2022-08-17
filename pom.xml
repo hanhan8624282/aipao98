@@ -4,7 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ecc</groupId>
     <artifactId>aipao98</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+   <!-- <modules>
+        <module>sms-submit-demo</module>
+    </modules>-->
     <name>aipao98</name>
     <description>aipao98</description>
 
@@ -16,6 +20,22 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3</version>
+        </dependency>
+        <!-- gson json -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>cly.sms.demo</groupId>
+            <artifactId>sms-submit-demo</artifactId>
+            <version>7.0.0</version>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -135,6 +155,10 @@
             <artifactId>jwt_2.12</artifactId>
             <version>0.7.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
         </dependency>
     </dependencies>
 

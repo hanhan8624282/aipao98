@@ -111,7 +111,7 @@ public class VerifyCodeController {
         int messageCode= (int)((Math.random()*9+1)*1000);
         System.out.println("code="+messageCode);
         //创建一个map
-        Map<String,String> map=new LinkedHashMap<>();
+        Map<String,String> map=new LinkedHashMap<String,String>();
 
 
 
