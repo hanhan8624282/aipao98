@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 import java.util.UUID;
 
 /**
- * 单条短信测试
+ * 诚立业单条短信测试 模板
  * @author zym
  * @date 2016-6-24 上午11:25:12
  */
@@ -22,10 +22,10 @@ public class MsgSubmitJsonTest {
     public static void main(String[] args) throws Exception {
         //String url = "https://www.sms-cly.cn/v7/msg/submit.json";
         String url = "http://sms.test.cly.cn:9001/v7/msg/submit.json";
-        String userName = "test";
-        String password = "test";
+        String userName = "yijinka";
+        String password = "u8at0p";
         String content = "【诚立业】您的验证码是1001";
-        String mobile = "13800000000";
+        String mobile = "15810245490";
         String seqid = UUID.randomUUID().toString();
 
         MsgSubmit msgSubmit = new MsgSubmit();
