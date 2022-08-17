@@ -4,9 +4,9 @@ package com.ecc.aipao98.controller;
 
 import com.ecc.aipao98.dao.SignupDetailDao;
 import com.ecc.aipao98.dao.SmsLogDao;
-import com.ecc.aipao98.until.ImageUtil;
-import com.ecc.aipao98.until.R;
-import com.ecc.aipao98.until.Result;
+import com.ecc.aipao98.pojo.SmsLog;
+import com.ecc.aipao98.until.*;
+import com.google.gson.Gson;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -21,10 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 
 @RestController
@@ -112,12 +109,61 @@ public class VerifyCodeController {
         System.out.println("code="+messageCode);
         //创建一个map
         Map<String,String> map=new LinkedHashMap<String,String>();
+        //调用短信接口发送短信
+        //String url = "https://www.sms-cly.cn/v7/msg/submit.json";
+       /* String url = "http://sms.test.cly.cn:9001/v7/msg/submit.json";
+        String userName = "yijinka";
+        String password = "u8at0p";
+        String content = "【诚立业】您的验证码是"+messageCode;
+        String mobile = userPhone;
+        String seqid = UUID.randomUUID().toString();
 
+        MsgSubmit msgSubmit = new MsgSubmit();
+        msgSubmit.setUserName(userName);
+        msgSubmit.setSign(MD5Utils.MD5Encode(userName + password + mobile + content));
+        msgSubmit.setMobile(mobile);
+        msgSubmit.setContent(content);
+        msgSubmit.setSeqid(seqid);
+        //gson
+        Gson gson = new Gson();
+        //转换为json串
+        StringBuilder jsonSb = new StringBuilder(gson.toJson(msgSubmit));
+        //请求短信接口
+        HttpResult httpResult = HttpUtils.post(url, jsonSb, Charsets.UTF8);
+        //打印输出
+        System.out.println(jsonSb.toString());
+        System.out.println(httpResult.getContent().toString());
+*/
+        //模拟短信调用success
+        HttpResult httpResult=new HttpResult();
+        httpResult.setResultCode("1");//返回错误代码。1-表示成功
+        httpResult.setResultMsg("success");
+        httpResult.setStatusCode(1);//返回错误代码。1-表示成功
+        //success
+        if("1".equals(httpResult.getResultCode())){
+            log.error("短信接口调用成功。。。");
+            SmsLog smsLog=new SmsLog();
+            smsLog.setCode(messageCode);
+            smsLog.setCellPhone(userPhone);
+            smsLog.setCreateTime(new Date());
+            smsLog.setIp(NetworkUtil.getIpAddress(request));
+            smsLog.setResultId("1234567890");
+            smsLog.setResultMessage(httpResult.getResultMsg());
+            smsLog.setResultStatus(String.valueOf(httpResult.getStatusCode()));
+            int insert = smsLogDao.insert(smsLog);
 
+            map.put("message", String.valueOf(messageCode));
+            map.put("phone",userPhone);
 
+            if(insert>0){
+                log.error("插入短信流水成功。。。");
+            }
+        }else{//调用接口失败
+            log.error("短信接口调用失败。。。");
+            return R.error().message("短信接口调用失败...");
+        }
 
-
-        return   R.ok();
+        return   R.ok().data("map",map);
     }
 
 }

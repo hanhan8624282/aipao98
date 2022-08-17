@@ -40,6 +40,7 @@ public class MsgSubmitJsonTest {
 
         HttpResult httpResult = HttpUtils.post(url, jsonSb, Charsets.UTF8);
 
+
         System.out.println(jsonSb.toString());
         System.out.println(httpResult.getContent().toString());
     }
