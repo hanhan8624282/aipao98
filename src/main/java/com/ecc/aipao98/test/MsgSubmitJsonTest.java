@@ -4,12 +4,11 @@
 package com.ecc.aipao98.test;
 
 
-import com.ecc.aipao98.until.HttpResult;
-import com.ecc.aipao98.until.HttpUtils;
-import com.ecc.aipao98.until.MD5Utils;
-import com.ecc.aipao98.until.MsgSubmit;
+import com.ecc.aipao98.until.*;
 import com.google.gson.Gson;
-import org.apache.commons.codec.Charsets;
+
+
+
 
 import java.util.UUID;
 
